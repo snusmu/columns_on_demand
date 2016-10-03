@@ -45,7 +45,7 @@ module ColumnsOnDemand
 
     def blob_and_text_columns
       columns.inject([]) do |blob_and_text_columns, column|
-        blob_and_text_columns << column.name if column.type == :binary || column.type == :text
+        blob_and_text_columns << column.name if [:binary, :text, :jsonb, :json].include?column.type
         blob_and_text_columns
       end
     end
